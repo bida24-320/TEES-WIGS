@@ -1,2 +1,257 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tee's Wigs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for image styling and animations */
+        .wig-image {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wig-image:hover {
+            transform: translateY(-0.5rem) scale(1.02);
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08);
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-in-left {
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideInLeft 0.5s ease-in-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in-right {
+            transform: translateX(20px);
+            opacity: 0;
+            animation: slideInRight 0.5s ease-in-out forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-inter">
+    <header class="bg-pink-100 shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-semibold text-pink-600">
+                <span class="text-pink-800">Tee's</span> Wigs
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="text-gray-700 hover:text-pink-600 transition duration-300">Home</a></li>
+                    <li><a href="#shop" class="text-gray-700 hover:text-pink-600 transition duration-300">Shop</a></li>
+                    <li><a href="#about" class="text-gray-700 hover:text-pink-600 transition duration-300">About</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-pink-600 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-20">
+        <div class="bg-white w-80 h-full absolute right-0 p-6">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-btn" class="text-gray-700 focus:outline-none" aria-label="Close Menu">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#home" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">Home</a></li>
+                    <li><a href="#shop" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">Shop</a></li>
+                    <li><a href="#about" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">About</a></li>
+                    <li><a href="#contact" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <section id="home" class="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="md:w-1/2 text-center md:text-left space-y-4 fade-in">
+            <h1 class="text-3xl md:text-4xl font-semibold text-pink-700">Tee's Wigs</h1>
+            <p class="text-gray-600 text-lg">Discover stunning synthetic lace front and full lace wigs.</p>
+            <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                <a href="#shop" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Shop Now</a>
+                <a href="#about" class="bg-transparent border-2 border-pink-500 text-pink-600 font-semibold py-3 px-6 rounded-full hover:bg-pink-50 hover:text-white transition duration-300">Learn More</a>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center slide-in-right">
+            <img src="placeholder-wig-image.jpg" alt="Wig Collection" class="wig-image rounded-lg max-w-full h-auto" style="max-height: 400px;">
+        </div>
+    </section>
+
+    <section id="shop" class="bg-pink-50 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-semibold text-pink-700 mb-8">Featured Collections</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in">
+                    <img src="placeholder-lace-front-wig.jpg" alt="Lace Front Wig" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Lace Front Wigs</h3>
+                    <p class="text-gray-500 text-sm mb-4">Natural hairline, versatile styling.</p>
+                    <a href="#shop" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Shop Now</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in">
+                    <img src="placeholder-full-lace-wig.jpg" alt="Full Lace Wig" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Full Lace Wigs</h3>
+                    <p class="text-gray-500 text-sm mb-4">Maximum styling versatility.</p>
+                    <a href="#shop" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Shop Now</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in">
+                    <img src="placeholder-synthetic-wig.jpg" alt="Synthetic Wig" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Synthetic Wigs</h3>
+                    <p class="text-gray-500 text-sm mb-4">Affordable, easy to style.</p>
+                    <a href="#shop" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="md:w-1/2 text-center md:text-left space-y-4 slide-in-left">
+            <h2 class="text-2xl font-semibold text-pink-700">About Tee's Wigs</h2>
+            <p class="text-gray-600 text-lg">
+                At Tee's Wigs, we believe that everyone deserves to feel confident and beautiful.  We offer a curated collection of high-quality synthetic lace front and full lace wigs designed for style, comfort, and versatility.  Our wigs are crafted to provide a natural look and feel, empowering you to express your unique style with ease.
+            </p>
+            <p class="text-gray-600 text-lg">
+               We are passionate about providing exceptional customer service and helping you find the perfect wig.
+            </p>
+        </div>
+        <div class="md:w-1/2 flex justify-center fade-in">
+            <img src="placeholder-about-us.jpg" alt="About Tee's Wigs" class="wig-image rounded-lg max-w-full h-auto" style="max-height: 400px;">
+        </div>
+    </section>
+
+    <section id="contact" class="bg-pink-50 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-semibold text-pink-700 mb-8">Contact Us</h2>
+            <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto slide-in-right">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                        <input type="text" id="name" placeholder="Your Name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" placeholder="Your Email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                        <textarea id="message" placeholder="Your Message" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 w-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; [Year] Tee's Wigs. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-6 h-6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><rect x="8" y="8" width="8" height="8" rx="3" ry="3"/><path d="M16.5 7.5v.001"/></svg>
+                </a>
+                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook w-6 h-6"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenuBtn = document.getElementById("close-menu-btn");
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        const navLinks = document.querySelectorAll('header nav a');
+        const sections = document.querySelectorAll('section');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle("hidden");
+        }
+
+        hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        closeMenuBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener("click", toggleMobileMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+                toggleMobileMenu();
+            }
+        });
+
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
