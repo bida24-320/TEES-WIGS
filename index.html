@@ -9,6 +9,114 @@
     <!--Bootstrap CSS-->
 	<link href="htps://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for cart */
+        #cart-items-container {
+            max-height: 400px; /* Adjust as needed */
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .cart-item img {
+            width: 80px; /* Adjust as needed */
+            height: auto;
+            border-radius: 8px;
+        }
+        .cart-item-details {
+            flex: 1;
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        .cart-item-quantity button {
+            margin: 0 5px;
+            width: 30px; /* Make buttons a fixed size */
+            height: 30px;
+            display: flex; /* Use flexbox for centering */
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .cart-item-quantity button:hover {
+            background-color: #f0f0f0;
+        }
+        .cart-item-quantity span {
+            font-size: 1rem;
+            margin: 0 5px; /* Add space around the quantity */
+            min-width: 20px; /* Ensure quantity display has some minimum width */
+            text-align: center;  /* Center the quantity number */
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        #checkout-btn {
+            margin-top: 20px;
+        }
+
+        /* Styles for online shipping form */
+        .shipping-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .shipping-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #pink-700;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #4b5563;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #f472b6; /* Highlight with pink */
+            box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.2); /* Light pink shadow */
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+    </style>		
 </head>
 <body class="bg-gray-100 font-inter">
     <header class="bg-pink-100 shadow-md sticky top-0 z-10">
