@@ -10,89 +10,112 @@
 	<link href="htps://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
     <style>
-	document.addEventListener("DOMContentLoaded", function () {
-    const cartLink = document.getElementById("cart-link");
-    const backToShopButton = document.getElementById("back-to-shop");
-    const cartSection = document.getElementById("cart");
-    const shopSections = document.querySelectorAll(".section:not(#cart)");
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-    const clearCartButton = document.getElementById("clear-cart");
-    const addToCartButtons = document.querySelectorAll(".card button");
-
-    function showCart() {
-        cartSection.style.display = "block";
-        shopSections.forEach(section => section.style.display = "none");
-        loadCart();
-    }
-
-    function hideCart() {
-        cartSection.style.display = "none";
-        shopSections.forEach(section => section.style.display = "block");
-    }
-
-    cartLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        showCart();
-    });
-
-    backToShopButton.addEventListener("click", function () {
-        hideCart();
-    });
-
-    function loadCart() {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cartItemsContainer.innerHTML = "";
-        let total = 0;
-
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-        } else {
-            cart.forEach((item, index) => {
-                const cartItem = document.createElement("div");
-                cartItem.classList.add("cart-item");
-
-                cartItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" style="width:50px; height:50px;">
-                    <span>${item.name} - ${item.price}</span>
-                    <button onclick="removeFromCart(${index})">Remove</button>
-                `;
-
-                cartItemsContainer.appendChild(cartItem);
-                total += parseFloat(item.price.replace("P", ""));
-            });
+        /* Custom styles for cart */
+        #cart-items-container {
+            max-height: 400px; /* Adjust as needed */
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .cart-item img {
+            width: 80px; /* Adjust as needed */
+            height: auto;
+            border-radius: 8px;
+        }
+        .cart-item-details {
+            flex: 1;
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        .cart-item-quantity button {
+            margin: 0 5px;
+            width: 30px; /* Make buttons a fixed size */
+            height: 30px;
+            display: flex; /* Use flexbox for centering */
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .cart-item-quantity button:hover {
+            background-color: #f0f0f0;
+        }
+        .cart-item-quantity span {
+            font-size: 1rem;
+            margin: 0 5px; /* Add space around the quantity */
+            min-width: 20px; /* Ensure quantity display has some minimum width */
+            text-align: center;  /* Center the quantity number */
         }
 
-        cartTotal.textContent = `Total: P${total}`;
-    }
+        .cart-total {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
 
-    window.removeFromCart = function (index) {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cart.splice(index, 1);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        loadCart();
-    };
+        #checkout-btn {
+            margin-top: 20px;
+        }
 
-    clearCartButton.addEventListener("click", function () {
-        localStorage.removeItem("cart");
-        loadCart();
-    });
+        /* Styles for online shipping form */
+        .shipping-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const productCard = this.parentElement;
-            const productName = productCard.querySelector("h3").textContent;
-            const productPrice = productCard.querySelector("p").textContent;
-            const productImg = productCard.querySelector("img").src;
+        .shipping-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #pink-700;
+        }
 
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cart.push({ name: productName, price: productPrice, image: productImg });
-            localStorage.setItem("cart", JSON.stringify(cart));
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #4b5563;
+        }
 
-            alert(`${productName} added to your cart!`);
-        });
-    });
-});    
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #f472b6; /* Highlight with pink */
+            box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.2); /* Light pink shadow */
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-inter">
@@ -139,6 +162,54 @@
             </nav>
         </div>
     </div>
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-semibold text-pink-700 mb-8">Your Shopping Cart</h1>
+       
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="lg:w-2/3">
+                <div id="cart-empty" class="bg-white rounded-lg shadow-md p-8 text-center hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <h2 class="text-xl font-semibold text-gray-700 mb-2">Your cart is empty</h2>
+                    <p class="text-gray-500 mb-6">Looks like you haven't added any items to your cart yet.</p>
+                    <a href="index.html#shop" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 inline-block">Continue Shopping</a>
+                </div>
+
+                <div id="cart-items" class="space-y-4">
+                    </div>
+            </div>
+
+            <div class="lg:w-1/3">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4">Order Summary</h2>
+                   
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span id="subtotal" class="font-medium">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Shipping</span>
+                            <span id="shipping" class="font-medium">$0.00</span>
+                        </div>
+                        <div class="flex justify-between border-t border-gray-200 pt-3">
+                            <span class="text-gray-800 font-semibold">Total</span>
+                            <span id="total" class="text-pink-600 font-bold text-lg">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button id="checkout-btn" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-4 rounded-full transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Proceed to Checkout
+                    </button>
+
+                    <p class="text-sm text-gray-500 mt-4 text-center">
+                        or <a href="index.html#shop" class="text-pink-500 hover:text-pink-600">Continue Shopping</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>	
 
     <section id="home" class="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-center gap-8">
         <div class="md:w-1/2 text-center md:text-left space-y-4 fade-in">
@@ -291,7 +362,145 @@
                 </a>
             </div>
         </div>
-    </footer>
+</footer>
+	<script>
+        // Cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample cart data - in a real app this would come from localStorage or a backend
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+           
+            // DOM elements
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartEmpty = document.getElementById('cart-empty');
+            const subtotalElement = document.getElementById('subtotal');
+            const shippingElement = document.getElementById('shipping');
+            const totalElement = document.getElementById('total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+           
+            // Render cart items
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+               
+                if (cart.length === 0) {
+                    cartEmpty.classList.remove('hidden');
+                    cartItemsContainer.classList.add('hidden');
+                    checkoutBtn.disabled = true;
+                    updateTotals();
+                    return;
+                }
+               
+                cartEmpty.classList.add('hidden');
+                cartItemsContainer.classList.remove('hidden');
+               
+                cart.forEach((item, index) => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h3 class="text-lg font-semibold text-gray-700">${item.name}</h3>
+                            <p class="text-gray-500 text-sm mb-2">${item.type}</p>
+                            <p class="text-pink-600 font-semibold">$${(item.price * item.quantity).toFixed(2)}</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease" data-index="${index}">-</button>
+                            <span class="quantity-display" data-index="${index}">${item.quantity}</span>
+                            <button class="quantity-btn increase" data-index="${index}">+</button>
+                            <button class="text-gray-400 hover:text-red-500 remove-item" data-index="${index}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+               
+                updateTotals();
+                addEventListeners();
+            }
+           
+            // Update totals
+            function updateTotals() {
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const shipping = subtotal > 50 ? 0 : 5.99; // Free shipping over $50
+                const total = subtotal + shipping;
+               
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                shippingElement.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+               
+                checkoutBtn.disabled = cart.length === 0;
+            }
+           
+            // Add event listeners
+            function addEventListeners() {
+                // Remove item buttons
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        cart.splice(index, 1);
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCart();
+                    });
+                });
+               
+                // Quantity buttons
+                document.querySelectorAll('.quantity-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        const quantityDisplay = document.querySelector(`.quantity-display[data-index="${index}"]`);
+                        let value = parseInt(quantityDisplay.textContent);
+                       
+                        if (this.classList.contains('increase')) {
+                            value++;
+                        } else if (this.classList.contains('decrease') && value > 1) {
+                            value--;
+                        }
+                       
+                        quantityDisplay.textContent = value;
+                        cart[index].quantity = value;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateTotals();
+                    });
+                });
+            }
+           
+            // Checkout button
+            checkoutBtn.addEventListener('click', function() {
+                // In a real app, this would redirect to checkout
+                alert('Proceeding to checkout! This would connect to your payment processor in a real implementation.');
+            });
+           
+            // Initialize cart
+            renderCart();
+           
+            // Mobile menu toggle (same as index.html)
+            const hamburgerBtn = document.getElementById("hamburger-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const closeMenuBtn = document.getElementById("close-menu-btn");
+           
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle("hidden");
+            }
+           
+            hamburgerBtn.addEventListener("click", toggleMobileMenu);
+            closeMenuBtn.addEventListener("click", toggleMobileMenu);
+           
+             // Mobile menu links
+            const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener("click", toggleMobileMenu);
+            });
+
+            // Close mobile menu on outside click
+            document.addEventListener('click', (event) => {
+                if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+    </script>
     <!--Bootstrap JS and dependencies-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script scr="https://cdn.jusdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
