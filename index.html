@@ -186,7 +186,6 @@
             <h2 class="text-2xl font-semibold text-pink-700 mb-8">Featured Collections</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in">
-                    <img src="WigImages/lace-front-wig.jpg" alt="Lace Front Wig" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
 		    <img src="WigImages/18-inch frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
 		    <img src="WigImages/12-inch curly frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
 		    <img src="WigImages/24-inch curly frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
@@ -230,7 +229,7 @@
             </p>
         </div>
         <div class="md:w-1/2 flex justify-center fade-in">
-            <img src="WigImages/about-us.jpg" alt="About Tee's Wigs" class="wig-image rounded-lg max-w-full h-auto" style="max-height: 400px;">
+            <img src="WigImages/about-us.jpg" class="wig-image rounded-lg max-w-full h-auto" style="max-height: 400px;">
 	    <img src="WigImages/13x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
         </div>
     </section>
@@ -257,60 +256,7 @@
             </div>
         </div>
     </section>
-    <script>
-        const hamburgerBtn = document.getElementById("hamburger-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const closeMenuBtn = document.getElementById("close-menu-btn");
-        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-        const navLinks = document.querySelectorAll('header nav a');
-        const sections = document.querySelectorAll('section');
-
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle("hidden");
-        }
-
-        hamburgerBtn.addEventListener("click", toggleMobileMenu);
-        closeMenuBtn.addEventListener("click", toggleMobileMenu);
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener("click", toggleMobileMenu);
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
-                toggleMobileMenu();
-            }
-        });
-
-        function updateActiveNavLink() {
-            let currentSectionId = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === currentSectionId) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNavLink);
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+ 
  <footer class="bg-gray-800 text-white py-6">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; [2025] Tee's Wigs. All rights reserved.</p>
