@@ -81,3 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+// Initialize cart section
+document.addEventListener('DOMContentLoaded', function() {
+    const cartSection = document.getElementById('cart');
+    if (cartSection) {
+        renderCart();
+    }
+});
