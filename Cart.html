@@ -4,24 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart - Tee's Wigs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .cart-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto auto auto;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .cart-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #f9fafb;
+        }
+        
+        .quantity-value {
+            margin: 0 0.75rem;
+            min-width: 1.5rem;
+            text-align: center;
+        }
+        
+        .remove-btn {
+            color: #ef4444;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .remove-btn:hover {
+            color: #dc2626;
+        }
+        
+        .cart-summary {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+        
+        .total-row {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #ec4899;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #db2777;
+        }
+        
+        .continue-shopping {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #ec4899;
+            font-weight: 500;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .empty-cart p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .item-details {
+                text-align: center;
+            }
+            
+            .quantity-control {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 font-inter">
+<body>
     <header class="bg-pink-100 shadow-md sticky top-0 z-10">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-xl font-semibold text-pink-600">
-                <span class="text-pink-800">Tee's Wigs</span> 
+                <span class="text-pink-800">Tee's</span> Wigs
             </a>
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
-                    <li><a href="index.html" class="text-gray-700 hover:text-pink-600 transition duration-300">Home</a></li>
-                    <li><a href="index.html#shop" class="text-gray-700 hover:text-pink-600 transition duration-300">Shop</a></li>
+                    <li><a href="index.html#home" class="text-gray-700 hover:text-pink-600 transition duration-300">Home</a></li>
                     <li><a href="index.html#about" class="text-gray-700 hover:text-pink-600 transition duration-300">About</a></li>
+                    <li><a href="index.html#shop" class="text-gray-700 hover:text-pink-600 transition duration-300">Shop</a></li>
                     <li><a href="index.html#contact" class="text-gray-700 hover:text-pink-600 transition duration-300">Contact</a></li>
-                    <li><a href="cart.html" class="text-pink-600 font-semibold transition duration-300">Cart</a></li>
+                    <li class="relative">
+                        <a href="cart.html" class="text-gray-700 hover:text-pink-600 transition duration-300 flex items-center">
+                            Cart
+                            <span id="cart-counter" class="hidden bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center ml-1">
+                                0
+                            </span>
+                        </a>
+                    </li>    
                 </ul>
             </nav>
             <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Navigation">
@@ -32,213 +178,234 @@
         </div>
     </header>
 
-    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-20">
-        <!-- Mobile menu content same as index.html -->
-    </div>
-
-    <main class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-semibold text-pink-700 mb-8">Your Shopping Cart</h1>
+    <main class="cart-container">
+        <div class="cart-header">
+            <h1 class="text-2xl font-semibold text-pink-700">Your Shopping Cart</h1>
+        </div>
         
-        <div class="flex flex-col lg:flex-row gap-8">
-            <!-- Cart Items Section -->
-            <div class="lg:w-2/3">
-                <div id="cart-empty" class="bg-white rounded-lg shadow-md p-8 text-center hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <h2 class="text-xl font-semibold text-gray-700 mb-2">Your cart is empty</h2>
-                    <p class="text-gray-500 mb-6">Looks like you haven't added any items to your cart yet.</p>
-                    <a href="index.html#shop" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300 inline-block">Continue Shopping</a>
-                </div>
-
-                <div id="cart-items" class="space-y-4">
-                    <!-- Cart items will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <!-- Order Summary Section -->
-            <div class="lg:w-1/3">
-                <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4">Order Summary</h2>
-                    
-                    <div class="space-y-3 mb-6">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Subtotal</span>
-                            <span id="subtotal" class="font-medium">$0.00</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Shipping</span>
-                            <span id="shipping" class="font-medium">$0.00</span>
-                        </div>
-                        <div class="flex justify-between border-t border-gray-200 pt-3">
-                            <span class="text-gray-800 font-semibold">Total</span>
-                            <span id="total" class="text-pink-600 font-bold text-lg">$0.00</span>
-                        </div>
-                    </div>
-
-                    <button id="checkout-btn" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-4 rounded-full transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                        Proceed to Checkout
-                    </button>
-
-                    <p class="text-sm text-gray-500 mt-4 text-center">
-                        or <a href="index.html#shop" class="text-pink-500 hover:text-pink-600">Continue Shopping</a>
-                    </p>
-                </div>
-            </div>
+        <div id="empty-cart-message" class="empty-cart">
+            <p class="text-lg">Your cart is empty</p>
+            <a href="index.html#shop" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300">
+                Continue Shopping
+            </a>
+        </div>
+        
+        <div id="cart-items-container" class="hidden">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        
+        <div id="cart-summary" class="hidden">
+            <!-- Cart summary will be dynamically inserted here -->
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-6">
-        <!-- Same footer as index.html -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Tee's Wigs. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><rect x="8" y="8" width="8" height="8" rx="3" ry="3"/><path d="M16.5 7.5v.001"/></svg>
+                </a>
+                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
     <script>
         // Cart functionality
+        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        
+        // Initialize cart on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Sample cart data - in a real app this would come from localStorage or a backend
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
-            // DOM elements
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartEmpty = document.getElementById('cart-empty');
-            const subtotalElement = document.getElementById('subtotal');
-            const shippingElement = document.getElementById('shipping');
-            const totalElement = document.getElementById('total');
-            const checkoutBtn = document.getElementById('checkout-btn');
-            
-            // Render cart items
-            function renderCart() {
-                cartItemsContainer.innerHTML = '';
-                
-                if (cart.length === 0) {
-                    cartEmpty.classList.remove('hidden');
-                    cartItemsContainer.classList.add('hidden');
-                    checkoutBtn.disabled = true;
-                    updateTotals();
-                    return;
-                }
-                
-                cartEmpty.classList.add('hidden');
-                cartItemsContainer.classList.remove('hidden');
-                
-                cart.forEach((item, index) => {
-                    const cartItemElement = document.createElement('div');
-                    cartItemElement.className = 'bg-white rounded-lg shadow-md p-4 flex flex-col md:flex-row gap-4';
-                    cartItemElement.innerHTML = `
-                        <div class="md:w-1/4">
-                            <img src="${item.image}" alt="${item.name}" class="w-full h-auto rounded-lg">
-                        </div>
-                        <div class="md:w-3/4 flex flex-col">
-                            <div class="flex justify-between">
-                                <h3 class="text-lg font-semibold text-gray-700">${item.name}</h3>
-                                <button class="text-gray-400 hover:text-red-500 remove-item" data-index="${index}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <p class="text-gray-500 text-sm mb-2">${item.type}</p>
-                            <div class="mt-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                                <div class="flex items-center">
-                                    <button class="quantity-btn decrease bg-gray-200 hover:bg-gray-300 rounded-l-full w-8 h-8 flex items-center justify-center" data-index="${index}">-</button>
-                                    <input type="number" min="1" value="${item.quantity}" class="quantity-input w-12 h-8 text-center border-t border-b border-gray-300">
-                                    <button class="quantity-btn increase bg-gray-200 hover:bg-gray-300 rounded-r-full w-8 h-8 flex items-center justify-center" data-index="${index}">+</button>
-                                </div>
-                                <span class="text-pink-600 font-semibold">$${(item.price * item.quantity).toFixed(2)}</span>
-                            </div>
-                        </div>
-                    `;
-                    cartItemsContainer.appendChild(cartItemElement);
-                });
-                
-                updateTotals();
-                addEventListeners();
-            }
-            
-            // Update totals
-            function updateTotals() {
-                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                const shipping = subtotal > 50 ? 0 : 5.99; // Free shipping over $50
-                const total = subtotal + shipping;
-                
-                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-                shippingElement.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
-                totalElement.textContent = `$${total.toFixed(2)}`;
-                
-                checkoutBtn.disabled = cart.length === 0;
-            }
-            
-            // Add event listeners
-            function addEventListeners() {
-                // Remove item buttons
-                document.querySelectorAll('.remove-item').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const index = parseInt(this.getAttribute('data-index'));
-                        cart.splice(index, 1);
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                    });
-                });
-                
-                // Quantity buttons
-                document.querySelectorAll('.quantity-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const index = parseInt(this.getAttribute('data-index'));
-                        const input = this.parentElement.querySelector('.quantity-input');
-                        let value = parseInt(input.value);
-                        
-                        if (this.classList.contains('increase')) {
-                            value++;
-                        } else if (this.classList.contains('decrease') && value > 1) {
-                            value--;
-                        }
-                        
-                        input.value = value;
-                        cart[index].quantity = value;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        updateTotals();
-                    });
-                });
-                
-                // Quantity inputs
-                document.querySelectorAll('.quantity-input').forEach(input => {
-                    input.addEventListener('change', function() {
-                        const index = parseInt(this.closest('.quantity-btn').getAttribute('data-index'));
-                        let value = parseInt(this.value);
-                        
-                        if (isNaN(value) || value < 1) {
-                            value = 1;
-                            this.value = 1;
-                        }
-                        
-                        cart[index].quantity = value;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        updateTotals();
-                    });
-                });
-            }
-            
-            // Checkout button
-            checkoutBtn.addEventListener('click', function() {
-                // In a real app, this would redirect to checkout
-                alert('Proceeding to checkout! This would connect to your payment processor in a real implementation.');
-            });
-            
-            // Initialize cart
             renderCart();
-            
-            // Mobile menu toggle (same as index.html)
-            const hamburgerBtn = document.getElementById("hamburger-btn");
-            const mobileMenu = document.getElementById("mobile-menu");
-            const closeMenuBtn = document.getElementById("close-menu-btn");
-            
-            function toggleMobileMenu() {
-                mobileMenu.classList.toggle("hidden");
+            updateCartCounter();
+        });
+        
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const cartSummary = document.getElementById('cart-summary');
+        
+            // Clear existing content
+            cartItemsContainer.innerHTML = '';
+            if (cartSummary) cartSummary.innerHTML = '';
+        
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartItemsContainer.classList.add('hidden');
+                if (cartSummary) cartSummary.classList.add('hidden');
+                document.getElementById('cart-counter').classList.add('hidden');
+                return;
+            }
+        
+            emptyCartMessage.classList.add('hidden');
+            cartItemsContainer.classList.remove('hidden');
+            if (cartSummary) cartSummary.classList.remove('hidden');
+        
+            // Render each cart item
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="item-image">
+                    <div class="item-details">
+                        <h3 class="font-medium text-gray-800">${item.name}</h3>
+                        <p class="text-sm text-gray-500 mt-1">${item.description}</p>
+                        <p class="text-pink-600 font-medium mt-1">P${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="quantity-control">
+                        <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})" 
+                            class="quantity-btn ${item.quantity <= 1 ? 'opacity-50 cursor-not-allowed' : ''}" 
+                            ${item.quantity <= 1 ? 'disabled' : ''}>
+                            −
+                        </button>
+                        <span class="quantity-value">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})" class="quantity-btn">
+                            +
+                        </button>
+                    </div>
+                    <div class="font-medium text-gray-800">
+                        P${(item.price * item.quantity).toFixed(2)}
+                    </div>
+                    <button onclick="removeItem(${item.id})" class="remove-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+        
+            // Calculate cart totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 100 ? 0 : 9.99; // Free shipping over P100
+            const tax = subtotal * 0.08; // 8% tax
+            const total = subtotal + shipping + tax;
+        
+            // Render cart summary
+            const summaryDiv = document.getElementById('cart-summary');
+            summaryDiv.innerHTML = `
+                <div class="space-y-3">
+                    <div class="summary-row">
+                        <span class="text-gray-600">Subtotal</span>
+                        <span class="font-medium">P${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="text-gray-600">Shipping</span>
+                        <span class="font-medium">${shipping === 0 ? 'FREE' : 'P'+shipping.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="text-gray-600">Tax (8%)</span>
+                        <span class="font-medium">P${tax.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span class="text-lg font-semibold">Total</span>
+                        <span class="text-lg font-semibold">P${total.toFixed(2)}</span>
+                    </div>
+                </div>
+                <button onclick="checkout()" class="checkout-btn">
+                    Proceed to Checkout
+                </button>
+                <a href="index.html#shop" class="continue-shopping">
+                    Continue Shopping
+                </a>
+            `;
+        }
+        
+        function updateQuantity(productId, newQuantity) {
+            const item = cart.find(item => item.id === productId);
+            if (item && newQuantity > 0) {
+                item.quantity = newQuantity;
+                updateCartStorage();
+                renderCart();
+                updateCartCounter();
+            }
+        }
+        
+        function removeItem(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartStorage();
+            renderCart();
+            updateCartCounter();
+            showNotification('Item removed from cart', 'info');
+        }
+        
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
             }
             
-            hamburgerBtn.addEventListener("click", toggleMobileMenu);
-            closeMenuBtn.addEventListener("click", toggleMobileMenu);
-        });
+            // Create a modal for checkout confirmation
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg max-w-md w-full p-6">
+                    <h3 class="text-xl font-semibold mb-4">Confirm Checkout</h3>
+                    <p class="text-gray-600 mb-6">You're about to purchase ${cart.reduce((sum, item) => sum + item.quantity, 0)} 
+                        item(s) for a total of P${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</p>
+                    <div class="flex space-x-4">
+                        <button onclick="this.closest('div').remove()" 
+                            class="flex-1 border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button onclick="processCheckout()" 
+                            class="flex-1 bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        function processCheckout() {
+            // For demo purposes:
+            showNotification('Order placed successfully!', 'success');
+            cart = [];
+            updateCartStorage();
+            renderCart();
+            updateCartCounter();
+            
+            // Remove modal
+            document.querySelector('.fixed.inset-0').remove();
+        }
+        
+        function updateCartStorage() {
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        function updateCartCounter() {
+            const counter = document.getElementById('cart-counter');
+            if (counter) {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                counter.textContent = totalItems;
+                counter.classList.toggle('hidden', totalItems === 0);
+            }
+        }
+        
+        function showNotification(message, type = 'success') {
+            const types = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                info: 'bg-blue-500'
+            };
+            
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 ${types[type]} text-white px-4 py-2 rounded-lg shadow-lg`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
     </script>
 </body>
 </html>
