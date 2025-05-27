@@ -1,57 +1,108 @@
 <style>
-  /* Custom CSS for image styling and animations */
-  .wig-image {
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+        /* Custom styles for cart */
+        #cart-items-container {
+            max-height: 400px; /* Adjust as needed */
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .cart-item img {
+            width: 80px; /* Adjust as needed */
+            height: auto;
+            border-radius: 8px;
+        }
+        .cart-item-details {
+            flex: 1;
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        .cart-item-quantity button {
+            margin: 0 5px;
+            width: 30px; /* Make buttons a fixed size */
+            height: 30px;
+            display: flex; /* Use flexbox for centering */
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .cart-item-quantity button:hover {
+            background-color: #f0f0f0;
+        }
+        .cart-item-quantity span {
+            font-size: 1rem;
+            margin: 0 5px; /* Add space around the quantity */
+            min-width: 20px; /* Ensure quantity display has some minimum width */
+            text-align: center;  /* Center the quantity number */
+        }
 
-  .wig-image:hover {
-      transform: translateY(-0.5rem) scale(1.02);
-      box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08);
-  }
+        .cart-total {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
 
-  .fade-in {
-      opacity: 0;
-      animation: fadeIn 0.5s ease-in-out forwards;
-  }
+        #checkout-btn {
+            margin-top: 20px;
+        }
 
-  @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-  }
+        /* Styles for online shipping form */
+        .shipping-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
 
-  .slide-in-left {
-      transform: translateX(-20px);
-      opacity: 0;
-      animation: slideInLeft 0.5s ease-in-out forwards;
-  }
+        .shipping-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #pink-700;
+        }
 
-  @keyframes slideInLeft {
-      from {
-          transform: translateX(-20px);
-          opacity: 0;
-      }
-      to {
-          transform: translateX(0);
-          opacity: 1;
-      }
-  }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #4b5563;
+        }
 
-  .slide-in-right {
-      transform: translateX(20px);
-      opacity: 0;
-      animation: slideInRight 0.5s ease-in-out forwards;
-  }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
 
-  @keyframes slideInRight {
-      from {
-          transform: translateX(20px);
-          opacity: 0;
-      }
-      to {
-          transform: translateX(0);
-          opacity: 1;
-      }
-  }
-</style>
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #f472b6; /* Highlight with pink */
+            box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.2); /* Light pink shadow */
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
