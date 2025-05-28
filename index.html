@@ -397,7 +397,7 @@
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-700">${item.name}</h3>
                                 <p class="text-gray-500 text-sm">${item.description}</p>
-                                <p class="text-pink-600 font-bold">$P{item.price.toFixed(2)}</p>
+                                <p class="text-pink-600 font-bold">$${item.price.toFixed(2)}</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
@@ -406,7 +406,7 @@
                                 <span class="px-3 py-1">${item.quantity}</span>
                                 <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300" onclick="increaseQuantity(${item.id})">+</button>
                             </div>
-                            <p class="text-pink-600 font-bold w-20 text-right">$P{(item.price * item.quantity).toFixed(2)}</p>
+                            <p class="text-pink-600 font-bold w-20 text-right">$${(item.price * item.quantity).toFixed(2)}</p>
                             <button class="text-gray-500 hover:text-red-500 transition duration-300" onclick="removeItem(${item.id})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -459,8 +459,8 @@
                 subtotal += item.price * item.quantity;
             });
 
-            subtotalElement.textContent = `$P{subtotal.toFixed(2)}`;
-            totalElement.textContent = `$P{subtotal.toFixed(2)}`; // For now, total is same as subtotal
+            subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+            totalElement.textContent = `$${subtotal.toFixed(2)}`; // For now, total is same as subtotal
 
             checkoutBtn.onclick = () => { // Changed to onclick to avoid multiple event listeners on re-render
                 if (cart.length > 0) {
