@@ -151,11 +151,11 @@
                 <h2 class="text-2xl font-semibold text-gray-700 mb-6">Order Summary</h2>
                 <div class="flex justify-between items-center mb-3">
                     <span class="text-gray-600">Subtotal:</span>
-                    <span id="cart-subtotal" class="font-bold text-gray-800">$0.00</span>
+                    <span id="cart-subtotal" class="font-bold text-gray-800">P0.00</span>
                 </div>
                 <div class="flex justify-between items-center border-t pt-4 mt-4">
                     <span class="text-xl font-bold text-pink-700">Total:</span>
-                    <span id="cart-total" class="text-xl font-bold text-pink-700">$0.00</span>
+                    <span id="cart-total" class="text-xl font-bold text-pink-700">P0.00</span>
                 </div>
                 <button id="checkout-btn" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 w-full mt-6">
                     Proceed to Checkout
@@ -244,14 +244,14 @@
                 id: 1,
                 name: "18-inch Frontal Wig",
                 description: "Natural hairline, versatile styling.",
-                price: 2500.00,
+                price: P2500.00,
                 image: "WigImages/18-inch frontal wig.JPG"
             },
             {
                 id: 2,
                 name: "12-inch Curly Frontal Wig",
                 description: "Bouncy curls, perfect for a natural look.",
-                price: 2800.00,
+                price: P2800.00,
                 image: "WigImages/12-inch curly frontal wig.JPG"
             },
             {
@@ -339,7 +339,7 @@
                     <img src="${product.image}" alt="${product.name}" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
                     <h3 class="text-lg font-semibold text-gray-700 mb-2">${product.name}</h3>
                     <p class="text-gray-500 text-sm mb-2">${product.description}</p>
-                    <p class="text-pink-600 font-bold text-xl mb-4">$P{product.price.toFixed(2)}</p>
+                    <p class="text-pink-600 font-bold text-xl mb-4">$${product.price.toFixed(2)}</p>
                     <button class="add-to-cart-btn bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300" data-product-id="${product.id}">Add to Cart</button>
                 `;
                 productListContainer.appendChild(productCard);
