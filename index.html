@@ -336,10 +336,10 @@
                 const productCard = document.createElement('div');
                 productCard.className = 'bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in';
                 productCard.innerHTML = `
-                    <img src="P{product.image}" alt="P{product.name}" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">P{product.name}</h3>
-                    <p class="text-gray-500 text-sm mb-2">P{product.description}</p>
-                    <p class="text-pink-600 font-bold text-xl mb-4">PP{product.price.toFixed(2)}</p>
+                    <img src="${product.image}" alt="${product.name}" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">${product.name}</h3>
+                    <p class="text-gray-500 text-sm mb-2">${product.description}</p>
+                    <p class="text-pink-600 font-bold text-xl mb-4">$P{product.price.toFixed(2)}</p>
                     <button class="add-to-cart-btn bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300" data-product-id="${product.id}">Add to Cart</button>
                 `;
                 productListContainer.appendChild(productCard);
@@ -393,21 +393,21 @@
 
                     cartItemDiv.innerHTML = `
                         <div class="flex items-center space-x-4">
-                            <img src="P{item.image}" alt="P{item.name}" class="w-20 h-20 object-cover rounded-md">
+                            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-md">
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-700">P{item.name}</h3>
-                                <p class="text-gray-500 text-sm">P{item.description}</p>
-                                <p class="text-pink-600 font-bold">PP{item.price.toFixed(2)}</p>
+                                <h3 class="text-lg font-semibold text-gray-700">${item.name}</h3>
+                                <p class="text-gray-500 text-sm">${item.description}</p>
+                                <p class="text-pink-600 font-bold">$P{item.price.toFixed(2)}</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
                             <div class="flex items-center border rounded-md">
-                                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded-l-md hover:bg-gray-300" onclick="decreaseQuantity(P{item.id})">-</button>
-                                <span class="px-3 py-1">P{item.quantity}</span>
-                                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300" onclick="increaseQuantity(P{item.id})">+</button>
+                                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded-l-md hover:bg-gray-300" onclick="decreaseQuantity(${item.id})">-</button>
+                                <span class="px-3 py-1">${item.quantity}</span>
+                                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300" onclick="increaseQuantity(${item.id})">+</button>
                             </div>
-                            <p class="text-pink-600 font-bold w-20 text-right">PP{(item.price * item.quantity).toFixed(2)}</p>
-                            <button class="text-gray-500 hover:text-red-500 transition duration-300" onclick="removeItem(P{item.id})">
+                            <p class="text-pink-600 font-bold w-20 text-right">$P{(item.price * item.quantity).toFixed(2)}</p>
+                            <button class="text-gray-500 hover:text-red-500 transition duration-300" onclick="removeItem(${item.id})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
@@ -459,8 +459,8 @@
                 subtotal += item.price * item.quantity;
             });
 
-            subtotalElement.textContent = `PP{subtotal.toFixed(2)}`;
-            totalElement.textContent = `PP{subtotal.toFixed(2)}`; // For now, total is same as subtotal
+            subtotalElement.textContent = `$P{subtotal.toFixed(2)}`;
+            totalElement.textContent = `$P{subtotal.toFixed(2)}`; // For now, total is same as subtotal
 
             checkoutBtn.onclick = () => { // Changed to onclick to avoid multiple event listeners on re-render
                 if (cart.length > 0) {
