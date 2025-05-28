@@ -6,8 +6,7 @@
     <title>Tee's Wigs</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!--Bootstrap CSS-->
-	<link href="htps://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-100 font-inter">
@@ -22,14 +21,13 @@
                     <li><a href="#shop" class="text-gray-700 hover:text-pink-600 transition duration-300">Shop</a></li>
                     <li><a href="#about" class="text-gray-700 hover:text-pink-600 transition duration-300">About</a></li>
                     <li><a href="#contact" class="text-gray-700 hover:text-pink-600 transition duration-300">Contact</a></li>
-		    <li><a href="#cart" class="text-gray-700 hover:text-pink-600 transition duration-300">Cart</a></li>	
+		            <li><a href="#cart" class="text-gray-700 hover:text-pink-600 transition duration-300">Cart</a></li>	
                 </ul>
             </nav>
             <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-
             </button>
         </div>
     </header>
@@ -38,7 +36,7 @@
         <div class="bg-white w-80 h-full absolute right-0 p-6">
             <div class="flex justify-end mb-4">
                 <button id="close-menu-btn" class="text-gray-700 focus:outline-none" aria-label="Close Menu">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -49,12 +47,120 @@
                     <li><a href="#shop" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">Shop</a></li>
                     <li><a href="#about" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">About</a></li>
                     <li><a href="#contact" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">Contact</a></li>
-		    <li><a href="#cart" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">Cart</a></li>	
+		            <li><a href="#cart" class="block text-lg text-gray-700 hover:text-pink-600 transition duration-300">Cart</a></li>	
                 </ul>
             </nav>
         </div>
     </div>
-   
+    
+    <section id="home" class="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="md:w-1/2 text-center md:text-left space-y-4 fade-in">
+            <h1 class="text-3xl md:text-4xl font-semibold text-pink-700">Tee's Wigs</h1>
+            <p class="text-gray-600 text-lg">Discover stunning synthetic lace front and full lace wigs.</p>
+            <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                <a href="#shop" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Shop Now</a>
+                <a href="#about" class="bg-transparent border-2 border-pink-500 text-pink-600 font-semibold py-3 px-6 rounded-full hover:bg-pink-50 hover:text-white transition duration-300">Learn More</a>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center slide-in-right">
+            <img src="WigImages/12-inch curly frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+            <img src="WigImages/13x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+            <img src="WigImages/18-inch frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+            <img src="WigImages/4x4 curly lace frontal wig.JPG"  class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+            <img src="WigImages/4x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+        </div>
+    </section>
+
+    <section id="shop" class="bg-pink-50 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-semibold text-pink-700 mb-8">Our Wigs</h2>
+            <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+        </div>
+    </section>
+
+    <section id="about" class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="md:w-1/2 text-center md:text-left space-y-4 slide-in-left">
+            <h2 class="text-2xl font-semibold text-pink-700">About Tee's Wigs</h2>
+            <p class="text-gray-600 text-lg">
+                At Tee's Wigs, we believe that everyone deserves to feel confident and beautiful. We offer a curated collection of high-quality synthetic lace front and full lace wigs designed for style, comfort, and versatility. Our wigs are crafted to provide a natural look and feel, empowering you to express your unique style with ease.
+            </p>
+            <p class="text-gray-600 text-lg">
+                We are passionate about providing exceptional customer service and helping you find the perfect wig.
+            </p>
+        </div>
+        <div class="md:w-1/2 flex justify-center fade-in">
+	        <img src="WigImages/13x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+        </div>
+    </section>
+
+    <section id="contact" class="bg-pink-50 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-semibold text-pink-700 mb-8">Contact Us</h2>
+            <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto slide-in-right">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                        <input type="text" id="name" placeholder="Your Name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" placeholder="Your Email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                        <textarea id="message" placeholder="Your Message" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 w-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="cart" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-semibold text-pink-700 mb-8 text-center">Your Shopping Cart</h2>
+
+        <div id="empty-cart-message" class="text-center text-gray-500 text-lg py-10 hidden">
+            Your cart is empty. Start shopping to add items!
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div id="cart-items-container" class="lg:w-2/3 bg-white rounded-lg shadow-md p-6">
+                </div>
+
+            <div id="cart-summary-section" class="lg:w-1/3 bg-white rounded-lg shadow-md p-6 sticky top-24 h-fit">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">Order Summary</h2>
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">Subtotal:</span>
+                    <span id="cart-subtotal" class="font-bold text-gray-800">$0.00</span>
+                </div>
+                <div class="flex justify-between items-center border-t pt-4 mt-4">
+                    <span class="text-xl font-bold text-pink-700">Total:</span>
+                    <span id="cart-total" class="text-xl font-bold text-pink-700">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 w-full mt-6">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Tee's Wigs. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-6 h-6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><rect x="8" y="8" width="8" height="8" rx="3" ry="3"/><path d="M16.5 7.5v.001"/></svg>
+                </a>
+                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook w-6 h-6"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
     <script>
         const hamburgerBtn = document.getElementById("hamburger-btn");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -109,74 +215,191 @@
             });
         });
 
-
-
         let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+        // Sample Products Data
+        const products = [
+            {
+                id: 1,
+                name: "18-inch Frontal Wig",
+                description: "Natural hairline, versatile styling.",
+                price: 150.00,
+                image: "WigImages/18-inch frontal wig.JPG"
+            },
+            {
+                id: 2,
+                name: "12-inch Curly Frontal Wig",
+                description: "Bouncy curls, perfect for a natural look.",
+                price: 130.00,
+                image: "WigImages/12-inch curly frontal wig.JPG"
+            },
+            {
+                id: 3,
+                name: "24-inch Curly Frontal Wig",
+                description: "Long, luscious curls, stunning and full.",
+                price: 180.00,
+                image: "WigImages/24-inch curly frontal wig.JPG"
+            },
+            {
+                id: 4,
+                name: "4x4 Curly Lace Frontal Wig",
+                description: "Compact and stylish curly wig.",
+                price: 110.00,
+                image: "WigImages/4x4 curly lace frontal wig.JPG"
+            },
+            {
+                id: 5,
+                name: "13x4 Curly Full Lace Frontal Wig",
+                description: "Full lace for ultimate styling freedom, curly texture.",
+                price: 200.00,
+                image: "WigImages/13x4 Curly Full Lace Frontal Wig.JPG"
+            },
+            {
+                id: 6,
+                name: "13x6 Curly Full Lace Frontal Wig",
+                description: "Extended lace for deeper parting, bouncy curls.",
+                price: 220.00,
+                image: "WigImages/13x6 Curly Full Lace Frontal Wig.JPG"
+            },
+            {
+                id: 7,
+                name: "13x4 Straight Bob Lace Wig",
+                description: "Chic straight bob, perfect for a sleek look.",
+                price: 140.00,
+                image: "WigImages/13x4 Straight Bob Lace Wig.JPG"
+            },
+            {
+                id: 8,
+                name: "4x4 Straight Bob Lace Wig",
+                description: "Classic straight bob with a natural lace closure.",
+                price: 120.00,
+                image: "WigImages/4x4 Straight Bob Lace Wig.JPG"
+            },
+            {
+                id: 9,
+                name: "13x6 Straight Synthetic Lace Front Wig",
+                description: "Long, straight, and low maintenance synthetic wig.",
+                price: 90.00,
+                image: "WigImages/13x6 straight synthetic lace front wig.JPG"
+            },
+            {
+                id: 10,
+                name: "24-inch Straight Lace Frontal Wig",
+                description: "Luxurious long straight wig for a glamorous look.",
+                price: 170.00,
+                image: "WigImages/24-inch straight lace frontal wig.JPG"
+            },
+            {
+                id: 11,
+                name: "Curly Synthetic Frontal Wig",
+                description: "Affordable and stylish curly synthetic wig.",
+                price: 80.00,
+                image: "WigImages/curly synthetic frontal wig.JPG"
+            },
+            {
+                id: 12,
+                name: "4x4 Lace Closure Short Straight Bob Lace Wig",
+                description: "Easy-to-wear short bob with a lace closure.",
+                price: 115.00,
+                image: "WigImages/4x4 Lace Closure Short Straight Bob Lace Wig.JPG"
+            },
+            {
+                id: 13, // Assign a unique ID
+                name: "Beaded Necklace And Earrings",
+                description: "Elegant set for any occasion.", // Added description
+                price: 500.00, // Corrected to number
+                image: "evervow/download.jpeg" // Correct image path
+            }
+        ];
+
+        function renderProducts() {
+            const productListContainer = document.getElementById('product-list');
+            if (!productListContainer) return; // Exit if the product list container isn't found
+
+            productListContainer.innerHTML = ''; // Clear existing content
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">${product.name}</h3>
+                    <p class="text-gray-500 text-sm mb-2">${product.description}</p>
+                    <p class="text-pink-600 font-bold text-xl mb-4">$${product.price.toFixed(2)}</p>
+                    <button class="add-to-cart-btn bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300" data-product-id="${product.id}">Add to Cart</button>
+                `;
+                productListContainer.appendChild(productCard);
+            });
+
+            // Add event listeners to "Add to Cart" buttons
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const productId = parseInt(event.target.dataset.productId);
+                    addToCart(productId);
+                });
+            });
+        }
+
+        function addToCart(productId) {
+            const productToAdd = products.find(p => p.id === productId);
+            if (productToAdd) {
+                const existingCartItem = cart.find(item => item.id === productId);
+                if (existingCartItem) {
+                    existingCartItem.quantity += 1;
+                } else {
+                    cart.push({ ...productToAdd, quantity: 1 });
+                }
+                sessionStorage.setItem('cart', JSON.stringify(cart));
+                renderCart(); // Re-render the cart when an item is added
+                alert(`${productToAdd.name} added to cart!`);
+            }
+        }
 
         function renderCart() {
             const cartItemsContainer = document.getElementById('cart-items-container');
             const emptyCartMessage = document.getElementById('empty-cart-message');
+            const cartSummarySection = document.getElementById('cart-summary-section'); 
+
+            if (!cartItemsContainer || !emptyCartMessage || !cartSummarySection) {
+                // If these elements don't exist, it means we are not on the cart page or section
+                return;
+            }
 
             cartItemsContainer.innerHTML = '';
 
             if (cart.length === 0) {
                 emptyCartMessage.classList.remove('hidden');
+                cartSummarySection.classList.add('hidden'); // Hide summary if cart is empty
             } else {
                 emptyCartMessage.classList.add('hidden');
+                cartSummarySection.classList.remove('hidden'); // Show summary if cart has items
                 cart.forEach(item => {
                     const cartItemDiv = document.createElement('div');
-                    cartItemDiv.className = 'cart-item';
+                    cartItemDiv.className = 'flex items-center justify-between border-b py-4'; // Tailwind classes for styling
 
-                    const itemImg = document.createElement('img');
-                    itemImg.src = item.image;
-                    itemImg.alt = item.name;
-
-                    const itemDetailsDiv = document.createElement('div');
-                    itemDetailsDiv.className = 'cart-item-details';
-                    itemDetailsDiv.innerHTML = `
-                        <h3 class="text-lg font-semibold text-gray-700">${item.name}</h3>
-                        <p class="text-gray-500 text-sm">${item.description}</p>
+                    cartItemDiv.innerHTML = `
+                        <div class="flex items-center space-x-4">
+                            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-md">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-700">${item.name}</h3>
+                                <p class="text-gray-500 text-sm">${item.description}</p>
+                                <p class="text-pink-600 font-bold">$${item.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center border rounded-md">
+                                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded-l-md hover:bg-gray-300" onclick="decreaseQuantity(${item.id})">-</button>
+                                <span class="px-3 py-1">${item.quantity}</span>
+                                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300" onclick="increaseQuantity(${item.id})">+</button>
+                            </div>
+                            <p class="text-pink-600 font-bold w-20 text-right">$${(item.price * item.quantity).toFixed(2)}</p>
+                            <button class="text-gray-500 hover:text-red-500 transition duration-300" onclick="removeItem(${item.id})">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
                     `;
-
-                    const itemQuantityDiv = document.createElement('div');
-                    itemQuantityDiv.className = 'cart-item-quantity';
-
-                    const decreaseBtn = document.createElement('button');
-                    decreaseBtn.textContent = '-';
-                    decreaseBtn.addEventListener('click', () => {
-                        decreaseQuantity(item.id);
-                    });
-
-                    const quantitySpan = document.createElement('span');
-                    quantitySpan.textContent = item.quantity;
-
-                    const increaseBtn = document.createElement('button');
-                    increaseBtn.textContent = '+';
-                    increaseBtn.addEventListener('click', () => {
-                        increaseQuantity(item.id);
-                    });
-
-                    const itemPriceDiv = document.createElement('div');
-                    itemPriceDiv.className = 'cart-item-price';
-                    itemPriceDiv.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
-
-                    const removeItemBtn = document.createElement('button');
-                    removeItemBtn.className = 'remove-item-btn';
-                    removeItemBtn.textContent = '✕';
-                    removeItemBtn.addEventListener('click', () => {
-                        removeItem(item.id);
-                    });
-
-                    itemQuantityDiv.appendChild(decreaseBtn);
-                    itemQuantityDiv.appendChild(quantitySpan);
-                    itemQuantityDiv.appendChild(increaseBtn);
-
-                    cartItemDiv.appendChild(itemImg);
-                    cartItemDiv.appendChild(itemDetailsDiv);
-                    cartItemDiv.appendChild(itemQuantityDiv);
-                    cartItemDiv.appendChild(itemPriceDiv);
-                    cartItemDiv.appendChild(removeItemBtn);
-
                     cartItemsContainer.appendChild(cartItemDiv);
                 });
 
@@ -200,6 +423,8 @@
                     item.quantity -= 1;
                     sessionStorage.setItem('cart', JSON.stringify(cart));
                     renderCart();
+                } else {
+                    removeItem(itemId); // Remove item if quantity drops to 0
                 }
             }
         }
@@ -211,159 +436,36 @@
         }
 
         function renderCartSummary() {
-            const cartItemsContainer = document.getElementById('cart-items-container');
-
-            const cartSummaryDiv = document.createElement('div');
-            cartSummaryDiv.className = 'cart-summary';
-
-            const summaryTitle = document.createElement('h2');
-            summaryTitle.textContent = 'Cart Summary';
+            const subtotalElement = document.getElementById('cart-subtotal');
+            const totalElement = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
 
             let subtotal = 0;
             cart.forEach(item => {
                 subtotal += item.price * item.quantity;
             });
 
-            const subtotalDiv = document.createElement('div');
-            subtotalDiv.className = 'cart-summary-item';
-            subtotalDiv.innerHTML = `
-                <span>Subtotal:</span>
-                <span>$${subtotal.toFixed(2)}</span>
-            `;
+            subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+            totalElement.textContent = `$${subtotal.toFixed(2)}`; // For now, total is same as subtotal
 
-            const total = subtotal;
-
-            const totalDiv = document.createElement('div');
-            totalDiv.className = 'cart-summary-total';
-            totalDiv.innerHTML = `
-                <span>Total:</span>
-                <span>$${total.toFixed(2)}</span>
-            `;
-
-            const checkoutBtn = document.createElement('button');
-            checkoutBtn.className = 'checkout-btn';
-            checkoutBtn.textContent = 'Checkout';
-            checkoutBtn.addEventListener('click', () => {
-                alert('Proceeding to checkout!');
-            });
-
-            cartSummaryDiv.appendChild(summaryTitle);
-            cartSummaryDiv.appendChild(subtotalDiv);
-            cartSummaryDiv.appendChild(totalDiv);
-            cartSummaryDiv.appendChild(checkoutBtn);
-
-            cartItemsContainer.insertAdjacentElement('afterend', cartSummaryDiv);
+            checkoutBtn.onclick = () => { // Changed to onclick to avoid multiple event listeners on re-render
+                if (cart.length > 0) {
+                    alert('Proceeding to checkout!');
+                    // Here you would typically redirect to a checkout page or initiate a payment process
+                    // For demonstration, we'll clear the cart after checkout
+                    cart = [];
+                    sessionStorage.removeItem('cart');
+                    renderCart();
+                } else {
+                    alert('Your cart is empty!');
+                }
+            };
         }
 
-        renderCart();
+        // Initial render calls
+        renderProducts(); // Render products when the page loads
+        renderCart(); // Render cart when the page loads (useful if you have a dedicated cart page)
+
     </script>
-
-    <section id="home" class="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-center gap-8">
-        <div class="md:w-1/2 text-center md:text-left space-y-4 fade-in">
-            <h1 class="text-3xl md:text-4xl font-semibold text-pink-700">Tee's Wigs</h1>
-            <p class="text-gray-600 text-lg">Discover stunning synthetic lace front and full lace wigs.</p>
-            <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <a href="#shop" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Shop Now</a>
-                <a href="#about" class="bg-transparent border-2 border-pink-500 text-pink-600 font-semibold py-3 px-6 rounded-full hover:bg-pink-50 hover:text-white transition duration-300">Learn More</a>
-            </div>
-        </div>
-        <div class="md:w-1/2 flex justify-center slide-in-right>
-            <img src="WigImages/12-inch curly frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-            <img src="WigImages/13x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-            <img src="WigImages/18-inch frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-            <img src="WigImages/4x4 curly lace frontal wig.JPG"  class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-            <img src="WigImages/4x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-        </div>
-    </section>
-
-    <section id="shop" class="bg-pink-50 py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-semibold text-pink-700 mb-8">Featured Collections</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in">
-		    <img src="WigImages/18-inch frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/12-inch curly frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/24-inch curly frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/4x4 curly lace frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Lace Front Wigs</h3>
-                    <p class="text-gray-500 text-sm mb-4">Natural hairline, versatile styling.</p>
-                    <a href="#shop" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Shop Now</a>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in">
-		    <img src="WigImages/13x4 Curly Full Lace Frontal Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/13x6 Curly Full Lace Frontal Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/13x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/4x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Full Lace Wigs</h3>
-                    <p class="text-gray-500 text-sm mb-4">Maximum styling versatility.</p>
-                    <a href="#shop" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Shop Now</a>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center transition duration-300 hover:shadow-lg hover:scale-105 fade-in">
-		    <img src="WigImages/13x6 straight synthetic lace front wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/24-inch straight lace frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/curly synthetic frontal wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-		    <img src="WigImages/4x4 Lace Closure Short Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Synthetic Wigs</h3>
-                    <p class="text-gray-500 text-sm mb-4">Affordable, easy to style.</p>
-                    <a href="#shop" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Shop Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-center gap-8">
-        <div class="md:w-1/2 text-center md:text-left space-y-4 slide-in-left">
-            <h2 class="text-2xl font-semibold text-pink-700">About Tee's Wigs</h2>
-            <p class="text-gray-600 text-lg">
-                At Tee's Wigs, we believe that everyone deserves to feel confident and beautiful.  We offer a curated collection of high-quality synthetic lace front and full lace wigs designed for style, comfort, and versatility.  Our wigs are crafted to provide a natural look and feel, empowering you to express your unique style with ease.
-            </p>
-            <p class="text-gray-600 text-lg">
-               We are passionate about providing exceptional customer service and helping you find the perfect wig.
-            </p>
-        </div>
-        <div class="md:w-1/2 flex justify-center fade-in">
-	    <img src="WigImages/13x4 Straight Bob Lace Wig.JPG" class="wig-image rounded-lg max-w-full h-auto mb-4" style="max-height: 300px;">
-        </div>
-    </section>
-
-    <section id="contact" class="bg-pink-50 py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-semibold text-pink-700 mb-8">Contact Us</h2>
-            <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto slide-in-right">
-                <form class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                        <input type="text" id="name" placeholder="Your Name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                        <input type="email" id="email" placeholder="Your Email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
-                        <textarea id="message" placeholder="Your Message" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-                    </div>
-                    <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 w-full">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
- 
- <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; [2025] Tee's Wigs. All rights reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-6 h-6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><rect x="8" y="8" width="8" height="8" rx="3" ry="3"/><path d="M16.5 7.5v.001"/></svg>
-                </a>
-                <a href="#" class="hover:text-pink-400 transition duration-300" aria-label="Facebook">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook w-6 h-6"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                </a>
-            </div>
-        </div>
-    </footer>
-    <!--Bootstrap JS and dependencies-->
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-	<script scr="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
